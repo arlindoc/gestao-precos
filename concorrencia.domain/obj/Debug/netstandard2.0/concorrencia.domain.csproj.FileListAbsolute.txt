@@ -16,3 +16,12 @@ C:\Z+Z\meurepo\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.
 C:\Z+Z\meurepo\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.csproj.CoreCompileInputs.cache
 C:\Z+Z\meurepo\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.dll
 C:\Z+Z\meurepo\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.pdb
+C:\Z+Z\meurepo\gestao-precos\concorrencia.domain\bin\Debug\netstandard2.0\concorrencia.domain.deps.json
+C:\Z+Z\meurepo\gestao-precos\concorrencia.domain\bin\Debug\netstandard2.0\concorrencia.domain.dll
+C:\Z+Z\meurepo\gestao-precos\concorrencia.domain\bin\Debug\netstandard2.0\concorrencia.domain.pdb
+C:\Z+Z\meurepo\gestao-precos\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.csprojAssemblyReference.cache
+C:\Z+Z\meurepo\gestao-precos\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.AssemblyInfoInputs.cache
+C:\Z+Z\meurepo\gestao-precos\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.AssemblyInfo.cs
+C:\Z+Z\meurepo\gestao-precos\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.csproj.CoreCompileInputs.cache
+C:\Z+Z\meurepo\gestao-precos\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.dll
+C:\Z+Z\meurepo\gestao-precos\concorrencia.domain\obj\Debug\netstandard2.0\concorrencia.domain.pdb

@@ -38,6 +38,36 @@
       <div class="form-group" style="width: 200px;">
         <button class="form-control btnSalvar" id="btnSalvar" [disabled] = "!registerForm.valid" (click)="novaRegiao(regiao)">Salvar</button>
       </div>
-
+      <table class="table" style="width:auto">
+        <thead class="thead-light">
+          <tr>
+            <th id='id' style="width: 5%;">#</th>
+            <th id='bandeira' style="width: 75%;">Bandeira</th>
+            <th id='opções' style="width: 10%;">Excluir</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="regioes && regioes.length">
+          <tr *ngFor="let regiao of regioes">
+            <td>{{regiao.id}}</td>
+            <td>{{regiao.nomeRegiao}}</td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-danger" tooltip="Excluir">
+                  <i class="fa fa-eraser"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot *ngIf="!regioes">
+          <tr>
+            <td colspan="7" class="text-center">
+              <h4>
+                Nenhuma bandeira encontrado!
+              </h4>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
   </form>
 </div>

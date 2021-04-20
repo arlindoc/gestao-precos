@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "concorrencia-app"
+    }
+  },
+  "defaultProject": "concorrencia-app",
+  "cli": {
+    "analytics": "0851f297-fa96-4f13-bd11-7e99610d23a8"
+  }
 }

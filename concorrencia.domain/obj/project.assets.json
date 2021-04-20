@@ -3639,11 +3639,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Z+Z\\meurepo\\concorrencia.domain\\concorrencia.domain.csproj",
+      "projectUniqueName": "C:\\Z+Z\\meurepo\\gestao-precos\\concorrencia.domain\\concorrencia.domain.csproj",
       "projectName": "concorrencia.domain",
-      "projectPath": "C:\\Z+Z\\meurepo\\concorrencia.domain\\concorrencia.domain.csproj",
+      "projectPath": "C:\\Z+Z\\meurepo\\gestao-precos\\concorrencia.domain\\concorrencia.domain.csproj",
       "packagesPath": "C:\\Users\\arlin\\.nuget\\packages\\",
-      "outputPath": "C:\\Z+Z\\meurepo\\concorrencia.domain\\obj\\",
+      "outputPath": "C:\\Z+Z\\meurepo\\gestao-precos\\concorrencia.domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",

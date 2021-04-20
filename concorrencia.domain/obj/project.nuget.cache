@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6yc826qv7cUB1efDQg+kz/hvR8o2jhv8uNQnHvbuOSTQ3LCjohbL96/FMpMECk3LkYPVbyfRPmOCOH/EAafMPA==",
+  "dgSpecHash": "it1tb+oj8UoKj7QePBPBWNDpYUKRPJr6ReKyj1nop2by8gmZlqJf+IFtdxGfwoLBb+RJQyYwH+FIhxMHN3xKkQ==",
   "success": true,
-  "projectFilePath": "c:\\Z+Z\\meurepo\\concorrencia.domain\\concorrencia.domain.csproj",
+  "projectFilePath": "C:\\Z+Z\\meurepo\\gestao-precos\\concorrencia.domain\\concorrencia.domain.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

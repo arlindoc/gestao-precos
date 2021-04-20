@@ -48,7 +48,7 @@ export class BandeiraComponent implements OnInit {
       (_bandeira: Bandeira[]) => {
         this.bandeiras = _bandeira ;
       }, error => {
-        this.alert.error(`Erro ao tentar carregar os clientes: ${error }`);
+        this.alert.error(`Erro ao tentar carregar os bandeiras: ${error }`);
       });
   }
 

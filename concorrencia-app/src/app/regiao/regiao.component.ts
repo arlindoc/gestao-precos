@@ -15,6 +15,7 @@ export class RegiaoComponent implements OnInit {
   registerForm: FormGroup;
   regiao: Regiao;
   modoSalvar = 'post';
+  regioes: Regiao[];
 
   constructor(private fb: FormBuilder, private http: HttpClient, private regiaoService: RegiaoService,
     // tslint:disable-next-line:align
@@ -22,6 +23,7 @@ export class RegiaoComponent implements OnInit {
 
   ngOnInit(): void {
     this.validation();
+    this.getRegioes();
   }
 
   validation(): void {
@@ -37,6 +39,7 @@ export class RegiaoComponent implements OnInit {
     this.regiao = Object.assign({}, this.registerForm.value);
     this.regiaoService.postRegiao(this.regiao).subscribe(
       () => {
+        this.getRegioes();
         this.alert.success('Inserido com Sucesso!');
       }, error => {
         this.alert.error(`Erro ao Inserir: ${error}`);
@@ -44,4 +47,14 @@ export class RegiaoComponent implements OnInit {
     );
   }
 
+  getRegioes(): void{
+    this.regiaoService.getRegioes().subscribe(
+    // tslint:disable-next-line: variable-name
+    (_regiao: Regiao[]) => {
+      this.regioes = _regiao;
+    }, error => {
+      this.alert.error(`Erro ao tentar carregar os regiões: ${error }`);
+    }
+    );
+  }
 }
