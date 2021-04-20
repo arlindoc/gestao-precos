@@ -1,0 +1,51 @@
+<form [formGroup]='registerForm'>
+  <div class="form-group" style="width: 60%; text-align: lef;">
+      <label style="text-align: left;">Posto</label>
+      <select class="form-control" formControlName="postoId"
+      [ngClass]="{'is-invalid' : registerForm.get('postoId').errors && registerForm.get('postoId').touched}"
+      (change)="onChangeposto($event.target.value)">
+      <option value="" >Selecione o posto</option>
+        <option *ngFor="let posto of postos; let i=index" [value]="i">{{posto.nomePosto}}</option>
+      </select>
+      <div *ngIf="registerForm.get('postoId').hasError('required') && registerForm.get('postoId').touched" class="invalid-feedback">
+        Selecione uma opção.
+      </div>
+  </div>
+  <div class="form-group required" style="text-align: left;">
+      <label for="">Lucro Bruto</label>
+      <input class="form-control txtPreco" type="text" currencyMask formControlName="lucroBruto"
+        [ngClass]="{'is-invalid': registerForm.get('lucroBruto').errors && registerForm.get('lucroBruto').touched}"
+        ng-model="money" ui-money-mask="3" [options]="{prefix: 'R$',thousands: '.', decimal: ',' }"/>
+      <div *ngIf="registerForm.get('lucroBruto').hasError('required') && registerForm.get('lucroBruto').touched"
+        class="invalid-feedback">
+        Campo Lucro Bruto é obrigatório.
+      </div>
+    </div>
+    <div class="form-group required" style="text-align: left;">
+      <label for="">Despesas</label>
+      <input class="form-control txtPreco" type="text" currencyMask formControlName="despesa"
+        [ngClass]="{'is-invalid': registerForm.get('despesa').errors && registerForm.get('despesa').touched}"
+        ng-model="money" ui-money-mask="3" [options]="{prefix: 'R$',thousands: '.', decimal: ',' }" />
+      <div *ngIf="registerForm.get('despesa').hasError('required') && registerForm.get('despesa').touched"
+        class="invalid-feedback">
+        Campo Despesa Atual é obrigatório.
+      </div>
+    </div>
+    <div class="form-group required" style="text-align: left;">
+      <label for="">Meta de Despesas</label>
+      <input class="form-control txtPreco" type="text" currencyMask formControlName="metaDespesa"
+        [ngClass]="{'is-invalid': registerForm.get('metaDespesa').errors && registerForm.get('metaDespesa').touched}"
+        ng-model="money" ui-money-mask="3" [options]="{prefix: 'R$',thousands: '.', decimal: ',' }"/>
+      <div *ngIf="registerForm.get('metaDespesa').hasError('required') && registerForm.get('metaDespesa').touched"
+        class="invalid-feedback">
+        Campo Meta de Despesas é obrigatório.
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="form-control btnSalvar" id="btnSalvar" tooltip="Salvar" [disabled] = "!registerForm.valid"
+      (click)="novoResultado()" style="width: 150px;"> Salvar
+      </button>
+    </div>
+</form>
+
+

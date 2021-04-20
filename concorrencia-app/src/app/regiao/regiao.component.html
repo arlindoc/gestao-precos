@@ -1,0 +1,43 @@
+<div class="container">
+  <form [formGroup]="registerForm">
+    <div class="form-row" style="width: auto;">
+      <div class="form-group" style="width: 60%; text-align: left;">
+        <label>Regiao</label>
+        <input type="text" class="form-control"
+        [ngClass]="{'is-invalid': registerForm.get('nomeRegiao').errors
+         && registerForm.get('nomeRegiao').touched}"
+        formControlName="nomeRegiao" placeholder="Nome da Região"/>
+        <div *ngIf="registerForm.get('nomeRegiao').hasError('required')
+         && registerForm.get('nomeRegiao').touched" class="invalid-feedback">
+        Nome da Região é obrigatório.
+        </div>
+      </div>
+      <div class="form-group" style="width: 60%; text-align: left;">
+        <label>Estado</label>
+        <input type="text" class="form-control"
+        [ngClass]="{'is-invalid': registerForm.get('estado').errors
+         && registerForm.get('estado').touched}"
+        formControlName="estado" placeholder="Nome do Estado"/>
+        <div *ngIf="registerForm.get('estado').hasError('required')
+         && registerForm.get('estado').touched" class="invalid-feedback">
+        Nome do Estado é obrigatório.
+        </div>
+      </div>
+      <div class="form-group" style="width: 60%; text-align: left;">
+        <label>Cidade</label>
+        <input type="text" class="form-control"
+        [ngClass]="{'is-invalid': registerForm.get('cidade').errors
+         && registerForm.get('cidade').touched}"
+        formControlName="cidade" placeholder="Nome da Cidade"/>
+        <div *ngIf="registerForm.get('cidade').hasError('required')
+         && registerForm.get('cidade').touched" class="invalid-feedback">
+        Nome da Cidade é obrigatório.
+        </div>
+      </div>
+    </div>
+      <div class="form-group" style="width: 200px;">
+        <button class="form-control btnSalvar" id="btnSalvar" [disabled] = "!registerForm.valid" (click)="novaRegiao(regiao)">Salvar</button>
+      </div>
+
+  </form>
+</div>

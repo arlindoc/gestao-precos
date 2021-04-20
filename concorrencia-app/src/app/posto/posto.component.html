@@ -1,0 +1,51 @@
+<div class="container">
+  <form [formGroup]="registerForm">
+      <div class="form-group" style="width: 80%; text-align: left;">
+        <label>Posto</label>
+        <input type="text" class="form-control" formControlName="nomePosto" placeholder="Nome do Posto"
+        [ngClass] = "{'is-invalid':registerForm.get('nomePosto').hasError('required')  && registerForm.get('nomePosto').touched}"/>
+        <div *ngIf="registerForm.get('nomePosto').hasError('required')  && registerForm.get('nomePosto').touched" class="invalid-feedback">
+        Nome do Posto é obrigatório.
+        </div>
+      </div>
+    <div class="form-group" style= "width: 60%; text-align: left;">
+      <label>Tipo de Posto</label>
+      <select class="browser-default custom-select" formControlName="tipo"
+      [ngClass]="{'is-invalid' : registerForm.get('tipo').errors && registerForm.get('tipo').touched}" (change)="onChangeTipo($event.target.value)">
+      <option value="" >Selecione o tipo</option>
+        <option *ngFor="let tipo of lstTipo; let i=index" [value]="i">{{tipo.descricao}}</option>
+      </select>
+      <div *ngIf="registerForm.get('tipo').hasError('required') && registerForm.get('tipo').touched" class="invalid-feedback">
+        Selecione uma opção.
+      </div>
+    </div>
+    <div class="form-row" style= "width: 60%;">
+      <label>Bandeira</label>
+      <select class="browser-default custom-select" formControlName="bandeiraId" (change)="onChangeBandeira($event.target.value)"
+      [ngClass]="{'is-invalid' : registerForm.get('bandeiraId').errors && registerForm.get('bandeiraId').touched}" >
+      <option value="" >Selecione a Bandeira</option>
+        <option *ngFor="let bandeira of bandeiras; let i=index"
+        [value]="i">{{bandeira.nomeBandeira}}</option>
+      </select>
+      <div *ngIf="registerForm.get('bandeiraId').hasError('required') && registerForm.get('regiaoId').touched" class="invalid-feedback">
+        Selecione uma opção.
+      </div>
+    </div>
+    <div class="form-row" style="width: 60%;">
+      <label>Regiao</label>
+      <select class="browser-default custom-select" formControlName="regiaoId" (change)="onChangeRegiao($event.target.value)"
+      [ngClass]="{'is-invalid' : registerForm.get('regiaoId').errors && registerForm.get('regiaoId').touched}" >>
+        <option value="">Selecione a Região</option>
+        <option *ngFor="let regiao of regioes; let i=index"
+        [value]="i">{{regiao.nomeRegiao}}</option>
+      </select>
+      <div *ngIf="registerForm.get('regiaoId').hasError('required') && registerForm.get('regiaoId').touched" class="invalid-feedback">
+        Selecione uma opção.
+      </div>
+    </div>
+    <br>
+    <div class="form-group" style="width: 200px;">
+      <button class="form-control btnSalvar" id="btnSalvar" [disabled] = "!registerForm.valid" (click)="novoPosto(posto)">Salvar</button>
+    </div>
+  </form>
+</div>

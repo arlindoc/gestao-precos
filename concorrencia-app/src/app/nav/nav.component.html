@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light" *ngIf="showMenu()">
+  <div class="container">
+    <a class="nav-link" routerLink="menu">Gestão de Preços</a>
+    <div *ngIf="false"  class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="regiao">Região</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="bandeira">Bandeira</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="posto">Posto</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="venda">Venda</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="compra">Compra</a>
+        </li>
+      </ul>
+    </div>
+    <ul *ngIf="loggedIn()" class="navbar-nav navbar-dark">
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()" href="#">Sair</a>
+      </li>
+    </ul>
+    <button *ngIf="!loggedIn()" class="btn btn-success" (click)="entrar()">Entrar</button>
+  </div>
+</nav>

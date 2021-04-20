@@ -1,0 +1,60 @@
+<div class="container">
+  <form [formGroup]="registerForm">
+    <div class="form-row" style="width: auto;">
+      <div class="form-group" style="width: 70%; text-align: left;">
+        <label>Bandeira</label>
+        <input type="text" class="form-control"
+          [ngClass]="{'is-invalid': registerForm.get('nomeBandeira').errors
+           && registerForm.get('nomeBandeira').touched}"
+          formControlName="nomeBandeira" placeholder="Nome da Bandeira"/>
+          <div *ngIf="registerForm.get('nomeBandeira').hasError('required')
+           && registerForm.get('nomeBandeira').touched" class="invalid-feedback">
+          Bandeira é obrigatório.
+          </div>
+          <div *ngIf="registerForm.get('nomeBandeira').hasError('minlength')
+          && registerForm.get('nomeBandeira').touched" class="invalid-feedback">
+          Bandeira deve ter no mínimo 4 Caracters.
+          </div>
+          <div *ngIf="registerForm.get('nomeBandeira').hasError('maxlength')
+          && registerForm.get('nomeBandeira').touched" class="invalid-feedback">
+          Bandeira deve ter no máximo 50 Caracters.
+          </div>
+      </div>
+    </div>
+    <div class="form-group" style="width: auto;">
+      <button class="form-control btnSalvar" id="btnSalvar" [disabled] = "!registerForm.valid" style="width: 150px;"
+       (click)="novoBandeira(bandeira)">Salvar</button>
+    </div>
+    <table class="table" style="width:auto">
+      <thead class="thead-light">
+        <tr>
+          <th id='id' style="width: 5%;">#</th>
+          <th id='bandeira' style="width: 75%;">Bandeira</th>
+          <th id='opções' style="width: 10%;">Excluir</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="bandeiras && bandeiras.length">
+        <tr *ngFor="let bandeira of bandeiras">
+          <td>{{bandeira.id}}</td>
+          <td>{{bandeira.nomeBandeira}}</td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-sm btn-danger" tooltip="Excluir">
+                <i class="fa fa-eraser"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot *ngIf="!bandeiras">
+        <tr>
+          <td colspan="7" class="text-center">
+            <h4>
+              Nenhuma bandeira encontrado!
+            </h4>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>

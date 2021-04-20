@@ -1,0 +1,47 @@
+<div class="container">
+  <form [formGroup]="registerForm">
+  <div class="form-row col-md-6">
+      <div class="form-row w-50 p-1">
+        <label>Bandeira</label>
+        <select class="browser-default custom-select" formControlName="bandeiraId"
+        [ngClass]="{'is-invalid' : registerForm.get('bandeiraId').errors}" (change)="onChange($event.target.value)">
+          <option [ngValue]="null">Selecione</option>
+          <option *ngFor="let bandeira of bandeiras; let i=index"
+          [value]="i">{{bandeira.nomeBandeira}}</option>
+        </select>
+        <div *ngIf="registerForm.get('bandeiraId').hasError('required')" class="invalid-feedback">
+          Selecione uma opção.
+        </div>
+      </div>
+    </div>
+    <div class="form-row w-50 p-1">
+      <div class="form-group col-md-6">
+        <label>Preço</label>
+        <input type="number" class="form-control"
+          [ngClass]="{'is-invalid': registerForm.get('preco').errors
+           && registerForm.get('preco').touched}"
+          formControlName="preco" placeholder="Preço de Custo"/>
+          <div *ngIf="registerForm.get('preco').hasError('required')
+           && registerForm.get('preco').touched" class="invalid-feedback">
+          Preço é obrigatório.
+          </div>
+      </div>
+    </div>
+    <div class="form-row w-50 p-1">
+    <div class="form-group col-md-6">
+      <label>Data</label>
+      <input type="date" class="form-control" value="{{preco}}"
+        [ngClass]="{'is-invalid': registerForm.get('data').errors
+         && registerForm.get('data').touched}"
+        formControlName="data" placeholder="Data"/>
+        <div *ngIf="registerForm.get('data').hasError('required')
+         && registerForm.get('data').touched" class="invalid-feedback">
+        Data é obrigatório.
+        </div>
+    </div>
+    </div>
+    <div class="form-group w-25 p-3">
+      <button class="form-control" id="btnSalvar" [disabled] = "!registerForm.valid" (click)="novoPreco(preco)">Salvar</button>
+    </div>
+  </form>
+</div>

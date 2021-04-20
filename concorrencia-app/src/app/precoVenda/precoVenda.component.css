@@ -1,0 +1,8 @@
+.txtPreco{
+  width: 100px;
+  font-size: small;
+}
+.header-align-right{
+  display: flex;
+  justify-content: flex-end;
+}
