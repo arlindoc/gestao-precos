@@ -34,7 +34,6 @@ namespace concorrencia.web.Controllers
             }
         }
 
-        [ClaimsAuthorize("Venda", "Incluir")]
         [HttpPost]
         public async Task<ActionResult> Post(PrecoVenda model)
         {

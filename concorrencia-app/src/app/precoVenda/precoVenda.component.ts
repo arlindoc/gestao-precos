@@ -80,17 +80,23 @@ export class PrecoVendaComponent implements OnInit {
       precoVenda.preco = this.precogc;
     } else if (tipo === 'GA'){
       precoVenda.combustivel = 'Gasolina Aditivada';
+      precoVenda.preco = this.precoga;
     } else if (tipo === 'EC'){
       precoVenda.combustivel = 'Etanol Comum';
+      precoVenda.preco = this.precoec;
     }  else if (tipo === 'EA'){
       precoVenda.combustivel = 'Etanol Aditivado';
+      precoVenda.preco = this.precoea;
     } else if (tipo === 'D1'){
       precoVenda.combustivel = 'Diesel 100';
+      precoVenda.preco = this.precod1;
     } else {
       precoVenda.combustivel = 'Diesel 500';
+      precoVenda.preco = this.precod5;
     }
     if (precoVenda.preco === undefined) {
       precoVenda.preco = 0;
+      precoVenda.preco = this.precogc;
     }
     precoVenda.pagamento = pr.pagamento;
     precoVenda.data = new Date();

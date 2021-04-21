@@ -1,0 +1,50 @@
+<div class="container">
+  <form [formGroup]="registerForm">
+    <div class="form-row col-md-6">
+        <div class="form-row w-50 p-1">
+          <label>Posto</label>
+          <select class="browser-default custom-select" formControlName="posto"
+           (change)="onChange($event.target.value)">
+            <option [value]="null">Selecione</option>
+            <option [ngValue]="i"*ngFor="let posto of postos; let i=index">{{posto.nomePosto}}</option>
+          </select>
+        </div>
+      </div>
+  </form>
+  <table class="table" style="width:auto">
+    <thead class="thead-light">
+      <tr>
+        <th id='bandeira' style="width: 20%;">Posto</th>
+        <th id='bandeira' style="width: 30%;">Combustivel</th>
+        <th id='bandeira' style="width: 10%;">Pagamento</th>
+        <th id='bandeira' style="width: 10%;">Preço</th>
+        <th id='bandeira' style="width: 10%;">Data</th>
+        <th id='bandeira' style="width: 2%;">Atual</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="lstFiltrado && lstFiltrado.length">
+      <tr *ngFor="let preco of lstFiltrado">
+        <td>{{preco.posto.nomePosto}}</td>
+        <td>{{preco.combustivel}}</td>
+        <td>{{preco.pagamento}}</td>
+        <td>{{preco.preco}}</td>
+        <td>{{preco.data | date}}</td>
+        <div class="col-md-3 d-flex justify-content-center align-items-center"
+        [ngStyle]="{'background-color': (preco.atual=='S') ? '#73c7af' : '#ff0000'}">
+          <td>
+            {{preco.atual}}
+          </td>
+        </div>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="!lstFiltrado">
+      <tr>
+        <td colspan="7" class="text-center">
+          <h4>
+            Nenhum Posto encontrado!
+          </h4>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

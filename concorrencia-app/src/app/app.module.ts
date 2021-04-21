@@ -27,6 +27,7 @@ import { PostoService } from './_services/posto.service';
 import { RegiaoService } from './_services/regiao.service';
 import { PrecoVendaService } from './_services/precoVenda.service';
 import { FinanceiroComponent } from './financeiro/financeiro.component';
+import { GestaoPrecosComponent } from './gestaoPrecos/gestaoPrecos.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FinanceiroComponent } from './financeiro/financeiro.component';
       LoginComponent,
       RegistrationComponent,
       NavComponent,
-      FinanceiroComponent
+      FinanceiroComponent,
+      GestaoPrecosComponent
    ],
   imports: [
     BrowserModule,

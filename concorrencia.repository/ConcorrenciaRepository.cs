@@ -2,6 +2,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using concorrencia.domain;
+using System;
+
 namespace concorrencia.repository
 {
     public class ConcorrenciaRepository : IConcorrenciaRepository
@@ -81,11 +83,33 @@ namespace concorrencia.repository
         #region Preco de Venda
         public async Task<PrecoVenda[]> GetAllPrecos()
         {
-            IQueryable<PrecoVenda> query = _dbContext.PrecoVendas;
+            IQueryable<PrecoVenda> query = _dbContext.PrecoVendas
+                .Include(p => p.Posto)
+                .Select( p => new PrecoVenda()
+                         {
+                             Id = p.Id,
+                             Combustivel = p.Combustivel,
+                             Posto = p.Posto,
+                             PostoId = p.PostoId,
+                             Pagamento = p.Pagamento,
+                             Preco = p.Preco,
+                             Data = p.Data,
+                             Atual = p.Data.Date == DateTime.Now.Date ? "S":"N"
+                         });
             query = query.AsNoTracking();
 
             return await query.ToArrayAsync();
         }
+
+        private string AtualProvider(DateTime data){
+            if(data.Date==new DateTime().Date){
+                return 'S'.ToString();
+            } else {
+                 return 'N'.ToString();
+            }
+           
+        }
+
         #endregion
         
         #region Financeiro

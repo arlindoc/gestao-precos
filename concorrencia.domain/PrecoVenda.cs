@@ -10,5 +10,6 @@ namespace concorrencia.domain
         public string Pagamento { get; set; }
         public string Combustivel { get; set; }
         public DateTime Data { get; set; }
+        public string Atual{get; set;}
     }
 }
