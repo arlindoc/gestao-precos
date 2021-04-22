@@ -72,14 +72,19 @@ export class PrecoCompraComponent implements OnInit {
       precoCompra.preco = this.precogc;
     } else if (tipo === 'GA'){
       precoCompra.combustivel = 'Gasolina Aditivada';
+      precoCompra.preco = this.precoga;
     } else if (tipo === 'EC'){
       precoCompra.combustivel = 'Etanol Comum';
+      precoCompra.preco = this.precoec;
     }  else if (tipo === 'EA'){
       precoCompra.combustivel = 'Etanol Aditivado';
+      precoCompra.preco = this.precoea;
     } else if (tipo === 'D1'){
       precoCompra.combustivel = 'Diesel 100';
+      precoCompra.preco = this.precod1;
     } else {
       precoCompra.combustivel = 'Diesel 500';
+      precoCompra.preco = this.precod5;
     }
     if (precoCompra.preco === undefined) {
         precoCompra.preco = 0;

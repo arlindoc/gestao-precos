@@ -57,4 +57,16 @@ export class RegiaoComponent implements OnInit {
     }
     );
   }
+
+  delteRegiao(regiao: Regiao): void {
+    this.regiaoService.deleteRegiao(regiao.id).subscribe(
+      () => {
+        this.getRegioes();
+        this.alert.success('Deletado com Sucesso');
+      }, error => {
+        this.alert.error('Erro ao tentar Deletar');
+        console.log(error);
+      }
+    );
+  }
 }

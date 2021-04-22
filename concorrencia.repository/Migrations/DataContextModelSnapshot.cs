@@ -287,6 +287,8 @@ namespace concorrencia.repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Atual");
+
                     b.Property<string>("Combustivel");
 
                     b.Property<DateTime>("Data");

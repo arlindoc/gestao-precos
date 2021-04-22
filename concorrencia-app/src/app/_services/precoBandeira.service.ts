@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PrecoCompra } from '../_models/PrecoCompra';
+import { PrecoDistribuidora } from '../_models/PrecoDistribuidora';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,12 @@ export class PrecoBandeiraService {
 
   constructor(private http: HttpClient) { }
 
-  getPrecoCompra(): Observable<PrecoCompra[]>{
-    return this.http.get<PrecoCompra[]>(this.baseURL);
+  getPrecoDistribuidora(): Observable<PrecoDistribuidora[]>{
+    return this.http.get<PrecoDistribuidora[]>(this.baseURL);
   }
 
-  postPrecoCompra(precoCompra: PrecoCompra): Observable<PrecoCompra>{
-    return this.http.post<PrecoCompra>(this.baseURL, precoCompra);
+  postPrecoDistribuidora(precoDistribuidora: PrecoDistribuidora): Observable<PrecoDistribuidora>{
+    return this.http.post<PrecoDistribuidora>(this.baseURL, precoDistribuidora);
   }
 
 }

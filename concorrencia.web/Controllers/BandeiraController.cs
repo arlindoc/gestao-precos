@@ -52,6 +52,27 @@ namespace concorrencia.web.Controllers
 
             return BadRequest();
         }
+        [HttpDelete("{BandeiraId}")]
+        public async Task<IActionResult> Delete(int BandeiraId)
+        {
+            try
+            {
+                var bandeira = await _repo.GetBandeiraById(BandeiraId);
+                if (bandeira == null) return NotFound();
 
+                _repo.Delete(bandeira);
+
+                if (await _repo.SaveChangesAsync())
+                {
+                    return Ok();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco Dados Falhou: " + ex.Message);
+            }
+
+            return BadRequest();
+        }
     }
 }

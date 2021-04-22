@@ -28,6 +28,7 @@ import { RegiaoService } from './_services/regiao.service';
 import { PrecoVendaService } from './_services/precoVenda.service';
 import { FinanceiroComponent } from './financeiro/financeiro.component';
 import { GestaoPrecosComponent } from './gestaoPrecos/gestaoPrecos.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { GestaoPrecosComponent } from './gestaoPrecos/gestaoPrecos.component';
        provide: HTTP_INTERCEPTORS,
        useClass: AuthInterceptor,
        multi: true
-    }
+    },
+    DatePipe
  ],
   bootstrap: [AppComponent]
 })

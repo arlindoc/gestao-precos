@@ -12,10 +12,12 @@ namespace concorrencia.repository
 
         #region Regiões
         Task <Regiao[]> GetAllRegioes();
+        Task<Regiao> GetRegiaoById(int RegiaoId);
         #endregion
 
         #region Bandeiras
         Task<Bandeira[]> GetAllBandeiras();
+        Task<Bandeira> GetBandeiraById(int BandeiraId);
         #endregion
 
         #region Postos Preco de Compra

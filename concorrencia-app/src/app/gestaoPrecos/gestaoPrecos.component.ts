@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Posto } from '../_models/Posto';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostoService } from '../_services/posto.service';
 import { AlertService } from '../alert';
 import { PrecoVenda } from '../_models/PrecoVenda';
 import { PrecoVendaService } from '../_services/precoVenda.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-gestaoprecos',
@@ -14,26 +14,25 @@ import { PrecoVendaService } from '../_services/precoVenda.service';
 export class GestaoPrecosComponent implements OnInit {
 
   postos: Posto[];
-  registerForm: FormGroup;
   precoVenda: PrecoVenda[];
   lstFiltrado: PrecoVenda[];
+  dataAtual = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+  postoId = null;
 
-  constructor(private fb: FormBuilder, private postoService: PostoService,
+  constructor(private postoService: PostoService, private datepipe: DatePipe,
               private alert: AlertService, private precoService: PrecoVendaService) { }
 
   ngOnInit(): void {
-    this.validation();
     this.getPosto();
     this.getPrecoVenda();
-    console.log(this.precoVenda);
   }
 
   onChange(i: any): void{
-    if(i[0] === null){
-      this.lstFiltrado = this.precoVenda;
-    } else {
-    this.lstFiltrado = this.precoVenda.filter(p => p.postoId.toString().match(i[0]));
-    }
+    if (this.postoId > 0){
+        this.lstFiltrado = this.precoVenda.filter(p => p.postoId.toString().match(this.postoId));
+      } else {
+        this.lstFiltrado = this.precoVenda;
+     }
   }
 
   excluir(): void{
@@ -63,10 +62,9 @@ export class GestaoPrecosComponent implements OnInit {
       });
   }
 
-  validation(): void {
-    this.registerForm = this.fb.group({
-      posto: ['', Validators.required]
-    });
+  atual(p: PrecoVenda): boolean{
+    const data  = this.datepipe.transform(p.data , 'yyyy-MM-dd');
+    return data.valueOf() === this.dataAtual.valueOf();
   }
 
 }

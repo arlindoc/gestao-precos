@@ -19,4 +19,8 @@ export class RegiaoService {
   postRegiao(regiao: Regiao): Observable<Regiao>{
     return this.http.post<Regiao>(this.baseURL, regiao);
   }
+
+  deleteRegiao(id: number): Observable<Regiao>{
+    return this.http.delete<Regiao>(`${this.baseURL}/${id}`);
+  }
 }

@@ -1,47 +1,126 @@
 <div class="container">
   <form [formGroup]="registerForm">
-  <div class="form-row col-md-6">
-      <div class="form-row w-50 p-1">
+    <div style="width: 100%;">
+      <div class="form-group" style="width: 70%;">
         <label>Bandeira</label>
-        <select class="browser-default custom-select" formControlName="bandeiraId"
-        [ngClass]="{'is-invalid' : registerForm.get('bandeiraId').errors}" (change)="onChange($event.target.value)">
-          <option [ngValue]="null">Selecione</option>
-          <option *ngFor="let bandeira of bandeiras; let i=index"
-          [value]="i">{{bandeira.nomeBandeira}}</option>
+        <select class="form-control" formControlName="bandeiraId"
+        [ngClass]="{'is-invalid' : registerForm.get('bandeiraId').errors && registerForm.get('bandeiraId').touched}"
+        (change)="onChangeBandeira($event.target.value)">
+        <option value="" >Selecione a Bandeira</option>
+          <option *ngFor="let bandeira of bandeiras; let i=index" [value]="i">{{bandeira.nomeBandeira}}</option>
         </select>
-        <div *ngIf="registerForm.get('bandeiraId').hasError('required')" class="invalid-feedback">
+        <div *ngIf="registerForm.get('bandeiraId').hasError('required') && registerForm.get('bandeiraId').touched" class="invalid-feedback">
           Selecione uma opção.
-        </div>
+       </div>
       </div>
     </div>
-    <div class="form-row w-50 p-1">
-      <div class="form-group col-md-6">
-        <label>Preço</label>
-        <input type="number" class="form-control"
-          [ngClass]="{'is-invalid': registerForm.get('preco').errors
-           && registerForm.get('preco').touched}"
-          formControlName="preco" placeholder="Preço de Custo"/>
-          <div *ngIf="registerForm.get('preco').hasError('required')
-           && registerForm.get('preco').touched" class="invalid-feedback">
-          Preço é obrigatório.
-          </div>
-      </div>
-    </div>
-    <div class="form-row w-50 p-1">
-    <div class="form-group col-md-6">
-      <label>Data</label>
-      <input type="date" class="form-control" value="{{preco}}"
-        [ngClass]="{'is-invalid': registerForm.get('data').errors
-         && registerForm.get('data').touched}"
-        formControlName="data" placeholder="Data"/>
-        <div *ngIf="registerForm.get('data').hasError('required')
-         && registerForm.get('data').touched" class="invalid-feedback">
-        Data é obrigatório.
-        </div>
-    </div>
-    </div>
-    <div class="form-group w-25 p-3">
-      <button class="form-control" id="btnSalvar" [disabled] = "!registerForm.valid" (click)="novoPreco(preco)">Salvar</button>
-    </div>
-  </form>
+    </form>
+      <table class="table"style="width:100%">
+        <thead class="thead-light">
+          <tr style="justify-content: center;">
+            <th id='id' style="width: 5%;">#</th>
+            <th id='combustivel' style="width: 40%;">Combustível</th>
+            <th id='Preço' style="width: 10%; text-align: center;">Preço</th>
+            <th id='opções' style="width: 10%;">Salvar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: left;">1</td>
+            <td style="text-align: left;">Gasolina Comum</td>
+            <td class="header-align-right">
+              <input type="text" currencyMask  class="form-control txtPreco"  [options]="{thousands: '.', decimal: ',' }"
+               ng-model="money" ui-money-mask="3" name="precogc" [(ngModel)] ="precogc" placeholder="R$ 0,00"/>
+            </td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-success" tooltip="Salvar" [disabled] = "!registerForm.valid"
+                (click)="salvarPreco('GC')">
+                  <i class="fa fa-edit"></i>
+                </button>
+               </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">2</td>
+            <td style="text-align: left;">Gasolina Aditivada</td>
+            <td class="header-align-right">
+              <input type="text" currencyMask  class="form-control txtPreco"  [options]="{ thousands: '.', decimal: ',' }"
+                ng-model="money" ui-money-mask="3"  name="precoga" [(ngModel)] ="precoga" placeholder="R$ 0,00"/>
+            </td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-success" tooltip="Salvar" [disabled] = "!registerForm.valid"
+                (click)="salvarPreco('GA')">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">3</td>
+            <td style="text-align: left;">Etanol Comum</td>
+            <td class="header-align-right">
+              <input type="text" currencyMask  class="form-control txtPreco"  [options]="{thousands: '.', decimal: ',' }"
+                ng-model="money" ui-money-mask="3" name="precoec" [(ngModel)] ="precoec" placeholder="R$ 0,00"/>
+            </td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-success" tooltip="Salvar" [disabled] = "!registerForm.valid"
+                (click)="salvarPreco('EC')">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">4</td>
+            <td style="text-align: left;">Etanol Aditivada</td>
+            <td class="header-align-right">
+              <input type="text" currencyMask  class="form-control txtPreco"  [options]="{ thousands: '.', decimal: ',' }"
+                ng-model="money" ui-money-mask="3" name="precoea" [(ngModel)] ="precoea" placeholder="R$ 0,00"/>
+            </td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-success" tooltip="Salvar" [disabled] = "!registerForm.valid"
+                (click)="salvarPreco('EA')">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">5</td>
+            <td style="text-align: left;">Diesel S10</td>
+            <td class="header-align-right">
+              <input type="text" currencyMask  class="form-control txtPreco"  [options]="{ thousands: '.', decimal: ',' }"
+                ng-model="money" ui-money-mask="3" name="precod1" [(ngModel)] ="precod1" placeholder="R$ 0,00"/>
+            </td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-success" tooltip="Salvar" [disabled] = "!registerForm.valid"
+                (click)="salvarPreco('D1')">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">6</td>
+            <td style="text-align: left;">Diesel S500</td>
+            <td class="header-align-right">
+              <input type="text" currencyMask  class="form-control txtPreco"  [options]="{ thousands: '.', decimal: ',' }"
+                ng-model="money" ui-money-mask="3" name="precod5" [(ngModel)] ="precod5" placeholder="R$ 0,00"/>
+            </td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-success" tooltip="Salvar" [disabled] = "!registerForm.valid"
+                (click)="salvarPreco('D5')">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 </div>

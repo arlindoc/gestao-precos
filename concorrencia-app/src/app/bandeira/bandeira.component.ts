@@ -52,4 +52,16 @@ export class BandeiraComponent implements OnInit {
       });
   }
 
+  deleteBandeira(bandeira: Bandeira): void {
+    this.bandeiraService.deletetBandeira(bandeira.id).subscribe(
+      () => {
+        this.getBandeira();
+        this.alert.success('Deletado com Sucesso');
+      }, error => {
+        this.alert.error('Erro ao tentar Deletar');
+        console.log(error);
+      }
+    );
+  }
+
 }

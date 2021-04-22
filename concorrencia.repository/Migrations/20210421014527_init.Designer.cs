@@ -10,7 +10,7 @@ using concorrencia.repository;
 namespace concorrencia.repository.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210419232852_init")]
+    [Migration("20210421014527_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -288,6 +288,8 @@ namespace concorrencia.repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Atual");
 
                     b.Property<string>("Combustivel");
 

@@ -19,4 +19,8 @@ export class BandeiraService {
   postBandeira(bandeira: Bandeira): Observable<Bandeira>{
     return this.http.post<Bandeira>(this.baseURL, bandeira);
   }
+
+  deletetBandeira(id: number): Observable<Bandeira>{
+    return this.http.delete<Bandeira>(`${this.baseURL}/${id}`);
+  }
 }

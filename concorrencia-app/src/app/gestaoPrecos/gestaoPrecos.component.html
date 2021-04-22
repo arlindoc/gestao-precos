@@ -1,16 +1,14 @@
 <div class="container">
-  <form [formGroup]="registerForm">
     <div class="form-row col-md-6">
         <div class="form-row w-50 p-1">
           <label>Posto</label>
-          <select class="browser-default custom-select" formControlName="posto"
-           (change)="onChange($event.target.value)">
+          <select class="browser-default custom-select" [(ngModel)]="postoId"
+          (change)="onChange($event.target.value)">
             <option [value]="null">Selecione</option>
-            <option [ngValue]="i"*ngFor="let posto of postos; let i=index">{{posto.nomePosto}}</option>
+            <option [ngValue] = "posto.id" *ngFor="let posto of postos">{{posto.nomePosto}}</option>
           </select>
         </div>
       </div>
-  </form>
   <table class="table" style="width:auto">
     <thead class="thead-light">
       <tr>
@@ -30,9 +28,8 @@
         <td>{{preco.preco}}</td>
         <td>{{preco.data | date}}</td>
         <div class="col-md-3 d-flex justify-content-center align-items-center"
-        [ngStyle]="{'background-color': (preco.atual=='S') ? '#73c7af' : '#ff0000'}">
+        [ngStyle]="{'background-color': atual(preco) ? '#73c7af' : '#ff0000'}">
           <td>
-            {{preco.atual}}
           </td>
         </div>
       </tr>

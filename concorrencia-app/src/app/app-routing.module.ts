@@ -13,6 +13,7 @@ import { PrecoCompraComponent } from './precoCompra/precoCompra.component';
 import { AuthGuard } from './auth/auth.guard';
 import { FinanceiroComponent } from './financeiro/financeiro.component';
 import { GestaoPrecosComponent } from './gestaoPrecos/gestaoPrecos.component';
+import { PrecoBandeiraComponent } from './precoBandeira/precoBandeira.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent,
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'posto', component: PostoComponent, canActivate: [AuthGuard] },
   { path: 'venda', component: PrecoVendaComponent, canActivate: [AuthGuard] },
   { path: 'compra', component: PrecoCompraComponent, canActivate: [AuthGuard] },
+  { path: 'distribuidora', component: PrecoBandeiraComponent, canActivate: [AuthGuard] },
   { path: 'financeiro', component: FinanceiroComponent, canActivate: [AuthGuard] },
   { path: 'precos', component: GestaoPrecosComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'menu', pathMatch: 'full'},

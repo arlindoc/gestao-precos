@@ -52,5 +52,28 @@ namespace concorrencia.web.Controllers
             
             return BadRequest();
         }
+
+        [HttpDelete("{RegiaoId}")]
+        public async Task<IActionResult> Delete(int RegiaoID)
+        {
+            try
+            {
+                var regiao = await _repo.GetRegiaoById(RegiaoID);
+                if (regiao == null) return NotFound();
+
+                _repo.Delete(regiao);
+
+                if (await _repo.SaveChangesAsync())
+                {
+                    return Ok();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco Dados Falhou: "+ ex.Message);
+            }
+
+            return BadRequest();
+        }
     }
 }

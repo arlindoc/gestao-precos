@@ -9,10 +9,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace concorrencia.web.Controllers
-{   
+{
     [ApiController]
     [Route("[controller]")]
-    public class PrecoVendaController: ControllerBase
+    public class PrecoVendaController : ControllerBase
     {
         private readonly IConcorrenciaRepository _repo;
         public PrecoVendaController(IConcorrenciaRepository repo)
@@ -25,7 +25,7 @@ namespace concorrencia.web.Controllers
         {
             try
             {
-               var results = await _repo.GetAllPrecos();
+                var results = await _repo.GetAllPrecos();
                 return Ok(results);
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace concorrencia.web.Controllers
             try
             {
                 _repo.Add(model);
-                if(await _repo.SaveChangesAsync())
+                if (await _repo.SaveChangesAsync())
                 {
                     return Created($"/precoVenda/{model.Id}", model);
                 }
@@ -51,6 +51,20 @@ namespace concorrencia.web.Controllers
             }
 
             return BadRequest();
+        }
+
+        [HttpGet("DataAtual")]
+        public DateTime? DataAtual()
+        {
+            try
+            {
+                return DateTime.Now.Date;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
         }
     }
 }

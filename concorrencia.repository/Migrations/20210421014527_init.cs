@@ -288,7 +288,8 @@ namespace concorrencia.repository.Migrations
                     Preco = table.Column<decimal>(nullable: false),
                     Pagamento = table.Column<string>(nullable: true),
                     Combustivel = table.Column<string>(nullable: true),
-                    Data = table.Column<DateTime>(nullable: false)
+                    Data = table.Column<DateTime>(nullable: false),
+                    Atual = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -19,5 +19,4 @@ export class PostoService {
   postPostos(posto: Posto): Observable<Posto>{
     return this.http.post<Posto>(this.baseURL, posto);
   }
-
 }
